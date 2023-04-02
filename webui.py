@@ -5,6 +5,8 @@ import importlib
 import signal
 import re
 import warnings
+import webbrowser
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.middleware.gzip import GZipMiddleware
@@ -289,7 +291,8 @@ def webui():
         startup_timer.record("scripts app_started_callback")
 
         print(f"Startup time: {startup_timer.summary()}.")
-
+        webbrowser.open(local_url)
+        
         wait_on_server(shared.demo)
         print('Restarting UI...')
 
